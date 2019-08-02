@@ -14,7 +14,11 @@ server.app.use(bodyParser.json());
 server.app.use('/user', userRoutes);
 
 // Conexión con MongoDB
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+// mongoose.connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+//     if (err) throw err;
+//     console.log('Base de datos ONLINE');
+// });
+mongoose.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.mongodb.net/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err) throw err;
     console.log('Base de datos ONLINE');
 });
