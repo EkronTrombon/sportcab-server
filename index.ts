@@ -2,6 +2,7 @@ import Server from './classes/server';
 import userRoutes from './routes/usuario';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import { MONGO_URI } from './config/config';
 
 const server = new Server();
 
@@ -13,7 +14,7 @@ server.app.use(bodyParser.json());
 server.app.use('/user', userRoutes);
 
 // Conexión con MongoDB
-mongoose.connect('mongodb://localhost:27017/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err) throw err;
     console.log('Base de datos ONLINE');
 });
