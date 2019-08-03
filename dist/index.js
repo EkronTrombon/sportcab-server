@@ -7,10 +7,13 @@ const server_1 = __importDefault(require("./classes/server"));
 const usuario_1 = __importDefault(require("./routes/usuario"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 const server = new server_1.default();
 // Bdy parser
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
 server.app.use(body_parser_1.default.json());
+// Configuración CORS
+server.app.use(cors_1.default({ origin: true, credentials: true }));
 // Rutas de la app
 server.app.use('/user', usuario_1.default);
 // Conexión con MongoDB

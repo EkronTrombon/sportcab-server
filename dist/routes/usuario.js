@@ -62,7 +62,7 @@ userRoutes.post('/create', (req, res) => {
             token: token
         });
     }).catch(err => {
-        res.status(500).json({
+        res.json({
             ok: false,
             error: err
         });
