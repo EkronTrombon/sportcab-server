@@ -4,11 +4,16 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { MONGO_URI } from './config/config';
 
+import cors from 'cors';
+
 const server = new Server();
 
 // Bdy parser
 server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json());
+
+// Configuración CORS
+server.app.use(cors({ origin: true, credentials: true }));
 
 // Rutas de la app
 server.app.use('/user', userRoutes);
