@@ -7,7 +7,6 @@ const server_1 = __importDefault(require("./classes/server"));
 const usuario_1 = __importDefault(require("./routes/usuario"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const config_1 = require("./config/config");
 const server = new server_1.default();
 // Bdy parser
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
@@ -15,11 +14,19 @@ server.app.use(body_parser_1.default.json());
 // Rutas de la app
 server.app.use('/user', usuario_1.default);
 // Conexión con MongoDB
-mongoose_1.default.connect(config_1.MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+// mongoose.connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+//     if (err) throw err;
+//     console.log('Base de datos ONLINE');
+// });
+mongoose_1.default.connect('mongodb://localhost:27017/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err)
         throw err;
     console.log('Base de datos ONLINE');
 });
+// mongoose.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.mongodb.net/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+//     if (err) throw err;
+//     console.log('Base de datos ONLINE');
+// });
 // Levantar el servidor express
 server.start(() => {
     console.log(`Servidor corriendo en puerto ${server.port}`);
