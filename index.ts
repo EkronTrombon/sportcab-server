@@ -23,14 +23,14 @@ server.app.use('/user', userRoutes);
 //     if (err) throw err;
 //     console.log('Base de datos ONLINE');
 // });
-mongoose.connect('mongodb://localhost:27017/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
-    if (err) throw err;
-    console.log('Base de datos ONLINE');
-});
-// mongoose.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.mongodb.net/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+// mongoose.connect('mongodb://localhost:27017/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
 //     if (err) throw err;
 //     console.log('Base de datos ONLINE');
 // });
+mongoose.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.mongodb.net/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+    if (err) throw err;
+    console.log('Base de datos ONLINE');
+});
 
 // Levantar el servidor express
 server.start(() => {
