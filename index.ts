@@ -2,7 +2,6 @@ import Server from './classes/server';
 import userRoutes from './routes/usuario';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import { MONGO_URI } from './config/config';
 
 import cors from 'cors';
 
@@ -19,16 +18,9 @@ server.app.use(cors({ origin: true, credentials: true }));
 server.app.use('/user', userRoutes);
 
 // Conexión con MongoDB
-// mongoose.connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
-//     if (err) throw err;
-//     console.log('Base de datos ONLINE');
-// });
-// mongoose.connect('mongodb://localhost:27017/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
-//     if (err) throw err;
-//     console.log('Base de datos ONLINE');
-// });
-mongoose.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.mongodb.net/sportcab', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+mongoose.connect(server.urlDB, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err) throw err;
+    console.log('Url actual: ', server.urlDB);
     console.log('Base de datos ONLINE');
 });
 

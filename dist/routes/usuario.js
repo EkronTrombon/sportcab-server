@@ -42,6 +42,14 @@ userRoutes.post('/login', (req, res) => {
         }
     });
 });
+// Obtener usuario por token
+userRoutes.get('/', autenticacion_1.verificaToken, (req, res) => {
+    const usuario = req.usuario;
+    res.json({
+        ok: true,
+        usuario: usuario
+    });
+});
 // Creación de usuarios
 userRoutes.post('/create', (req, res) => {
     const user = {
