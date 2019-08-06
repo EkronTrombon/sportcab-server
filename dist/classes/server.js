@@ -8,6 +8,7 @@ class Server {
     constructor() {
         // public port: number = 3000;
         this.port = process.env.PORT || 3000;
+        this.env = process.env.NODE_ENV || 'dev';
         this.app = express_1.default();
     }
     start(callback) {

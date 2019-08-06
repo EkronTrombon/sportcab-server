@@ -32,5 +32,5 @@ mongoose_1.default.connect('mongodb+srv://ekron:71wer6kJhNkfkOTL@cluster0-yaqk0.
 });
 // Levantar el servidor express
 server.start(() => {
-    console.log(`Servidor corriendo en puerto ${server.port}`);
+    console.log(`Servidor corriendo en puerto ${server.port} : Entorno: ${server.env}`);
 });
