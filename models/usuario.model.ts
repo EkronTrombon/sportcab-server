@@ -5,7 +5,8 @@ const usuarioSchema = new Schema({
     nombre: { type: String, required: [true, 'El nombre es obligatorio'] },
     email: { type: String, unique: true, required: [true, 'El eMail es obligatorio'] },
     pwd: { type: String, required: [true, 'La contraseña es obligatoria'] },
-    avatar: { type: String, default: 'no-img.png' }
+    avatar: { type: String, default: 'no-img.png' },
+    rol: { type: String, default: 'USER_ROLE', required: [true, 'El rol del usuario es obligatorio'] }
 });
 
 usuarioSchema.method('compararPwd', function(pwd: string = ''): boolean {
@@ -21,6 +22,7 @@ interface IUsuario extends Document {
     email: string;
     password: string;
     avatar: string;
+    rol: string;
     compararPwd(pwd: string): boolean;
 };
 

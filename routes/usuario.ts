@@ -23,7 +23,8 @@ userRoutes.post('/login', (req: Request, res: Response) => {
                 _id: userDB._id,
                 nombre: userDB.nombre,
                 email: userDB.email,
-                avatar: userDB.avatar
+                avatar: userDB.avatar,
+                rol: userDB.rol
             });
             res.json({
                 ok: true,
@@ -53,14 +54,16 @@ userRoutes.post('/create', (req: Request, res: Response) => {
         nombre: req.body.nombre,
         email: req.body.email,
         pwd: bcrypt.hashSync(req.body.pwd, 10),
-        avatar: req.body.avatar
+        avatar: req.body.avatar,
+        rol: req.body.rol
     };
     Usuario.create(user).then(userDB => {
         const token = Token.getJwtToken({
             _id: userDB._id,
             nombre: userDB.nombre,
             email: userDB.email,
-            avatar: userDB.avatar
+            avatar: userDB.avatar,
+            rol: userDB.rol
         });
         res.json({
             ok: true,
@@ -79,7 +82,8 @@ userRoutes.post('/update', verificaToken, (req: any, res: Response) => {
     const user = {
         nombre: req.body.nombre || req.usuario.nombre,
         email: req.body.email || req.usuario.email,
-        avatar: req.body.avatar || req.usuario.avatar
+        avatar: req.body.avatar || req.usuario.avatar,
+        rol: req.body.rol || req.usuario.rol
     };
     Usuario.findByIdAndUpdate(req.usuario._id, user, {new: true}, (err, userDB) => {
         if (err) throw err;
@@ -94,7 +98,8 @@ userRoutes.post('/update', verificaToken, (req: any, res: Response) => {
             _id: userDB._id,
             nombre: userDB.nombre,
             email: userDB.email,
-            avatar: userDB.avatar
+            avatar: userDB.avatar,
+            rol: userDB.rol
         });
         res.json({
             ok: true,
