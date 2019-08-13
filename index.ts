@@ -1,5 +1,6 @@
 import Server from './classes/server';
 import userRoutes from './routes/usuario';
+import eventRoutes from './routes/evento';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
@@ -16,6 +17,7 @@ server.app.use(cors({ origin: true, credentials: true }));
 
 // Rutas de la app
 server.app.use('/user', userRoutes);
+server.app.use('/event', eventRoutes);
 
 // Conexión con MongoDB
 mongoose.connect(server.urlDB, { useNewUrlParser: true, useCreateIndex: true }, (err) => {

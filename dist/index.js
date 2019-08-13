@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./classes/server"));
 const usuario_1 = __importDefault(require("./routes/usuario"));
+const evento_1 = __importDefault(require("./routes/evento"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
@@ -16,6 +17,7 @@ server.app.use(body_parser_1.default.json());
 server.app.use(cors_1.default({ origin: true, credentials: true }));
 // Rutas de la app
 server.app.use('/user', usuario_1.default);
+server.app.use('/event', evento_1.default);
 // Conexión con MongoDB
 mongoose_1.default.connect(server.urlDB, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err)
