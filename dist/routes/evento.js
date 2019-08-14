@@ -5,7 +5,7 @@ const evento_model_1 = require("../models/evento.model");
 const eventRoutes = express_1.Router();
 // Obtener todos los eventos
 eventRoutes.get('/', (req, res) => {
-    evento_model_1.Evento.find((err, eventosDB) => {
+    evento_model_1.Evento.find({}).sort({ fecha: 'ascending' }).exec((err, eventosDB) => {
         if (err) {
             return res.json({
                 ok: false,

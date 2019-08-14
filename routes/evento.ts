@@ -5,7 +5,7 @@ const eventRoutes = Router();
 
 // Obtener todos los eventos
 eventRoutes.get('/', (req: Request, res: Response) => {
-    Evento.find((err, eventosDB) => {
+    Evento.find({}).sort({ fecha: 'ascending' }).exec((err, eventosDB) => {
         if (err) {
             return res.json({
                 ok: false,
